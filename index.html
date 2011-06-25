@@ -4,11 +4,13 @@
   <title>EventMachine</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 
   <script>
+    // Comunicação
     var ws;
     var map = undefined;
+    var playerName = '';
 
     $(document).ready(function() {
       if (!("WebSocket" in window)) {
@@ -16,10 +18,28 @@
         return;
       }
 
+      var call = {
+        "new_player_info": newPlayer,
+        "player_info": setInfo
+      }
+
       ws = new WebSocket("ws://localhost:8080/");
+      
       ws.onmessage = function (evt) {
-        console.log(evt.data);
-        $('#chat_area').append(evt.data + "<br />");
+        var data = JSON.parse(evt.data);
+        call[data.action](data.params);
+        // var state = JSON.parse(evt.data);
+        // if(state.name != undefined){
+        //   if(state.state == undefined) {
+        //     playerName = state.name;
+        //     $('.area').append('<div class="element" id=' + state.name + ' style="margin-left: 10px;"></div>');
+        //   } else {
+        //     playerName = state.name;
+        //     setPosition(state.name, state.state.top, state.state.left);
+        //   }
+        // } else if (state.connected != undefined) {
+        //   $('.area').append('<div class="element" id=' + state.connected + ' style="margin-left: 10px;"></div>');
+        // }
       };
 
       ws.onclose = function () {
@@ -33,17 +53,98 @@
       });
     });
 
+    function newPlayer(params) {
+      console.log("New player");
+      console.log(params);
+    }
+
+    function setInfo(params) {
+      console.log("Player Info");
+      console.log(params);
+    }
+
     function send(sender) {
       var val = $('#post_entry').val();
       if (val != '') ws.send(val);
     }
   </script>
+
+  <script>
+    // Movimentação
+
+    var move = {
+      '38': moveUp,
+      '40': moveDown,
+      '37': moveLeft,
+      '39': moveRight
+    }
+
+    $(function() {
+      $("body").keydown(function(e){
+        move[e.keyCode]($('#' + playerName));
+        var st = {};
+        st[playerName] = state($('#' + playerName));
+        ws.send(JSON.stringify(st));
+      })
+    });
+
+    function moveUp(element) {
+      var marginTop = parseInt($(element).css('margin-top'));
+      $(element).css('margin-top', marginTop - 5);
+    }
+
+    function moveDown(element) {
+      var marginTop = parseInt($(element).css('margin-top'));
+      $(element).css('margin-top', marginTop + 5);
+    }
+
+    function moveLeft(element) {
+      var marginLeft = parseInt($(element).css('margin-left'));
+      $(element).css('margin-left', marginLeft - 5);
+    }
+
+    function moveRight(element) {
+      var marginLeft = parseInt($(element).css('margin-left'));
+      $(element).css('margin-left', marginLeft + 5);
+    }
+
+    function setPosition (element, top, left) {
+      $('#' + element).css('margin-top', top);
+      $('#' + element).css('margin-left', left);
+    }
+
+    function state(element) {
+      var top = $(element).css('margin-top');
+      var left = $(element).css('margin-left');
+
+      return({top: top, left: left});
+    }
+  </script>
+
+  <style>
+    .area{
+        width: 600px;
+        height: 200px;
+        background: #616161;
+        padding-top: 40px;
+    }
+
+    .element{
+        background: #000;
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+    }
+
+</style>
 </head>
 <body>
-  <form>
-    <input type='text' id='post_entry' name='post_entry' placeholder='say' />&nbsp;
-    <input type='submit' id='submit' />
-  </form>
-  <div id='chat_area'></div>
+
+  <body>
+    <div class="area">
+      <!-- <div class="element" id='player' style="margin-left: 10px;"></div> -->
+    </div>
+  </body>
+
 </body>
 </html>
