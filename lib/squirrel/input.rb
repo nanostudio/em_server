@@ -5,6 +5,7 @@ module Squirrel
   	end
   	
 	  class Configuration
+      # TODO gerar metodos para todos os inputs disponiveis
 	  	def websocket(options)
 	  		Input::Websocket.start(options)
 	  	end
