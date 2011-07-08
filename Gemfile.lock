@@ -4,6 +4,7 @@ GEM
     addressable (2.2.6)
     archive-tar-minitar (0.5.2)
     columnize (0.3.3)
+    diff-lcs (1.1.2)
     em-http-request (1.0.0.beta.4)
       addressable (>= 2.2.3)
       em-socksify
@@ -21,6 +22,14 @@ GEM
     json (1.5.2)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.4)
+    rspec-expectations (2.6.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
     ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
@@ -42,4 +51,5 @@ DEPENDENCIES
   eventmachine (= 1.0.0.beta.3)
   guard
   json
+  rspec
   ruby-debug19
