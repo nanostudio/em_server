@@ -6,7 +6,7 @@ module Squirrel
           config.websocket :host => '0.0.0.0', :port => 8080
         end
         
-        GameEngine.config do |config|
+        Squirrel::GameEngine.config do |config|
           config.socket :host => '0.0.0.0', :port => 8080
         end
         
