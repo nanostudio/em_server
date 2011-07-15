@@ -1,12 +1,23 @@
 module Squirrel
   module Input
-    module Websocket
-      def self.start(options)
-        EM::WebSocket.start(options) do |ws|
+    @@queue = EM::Queue.new
+    @@connections = []
+
+    def self.queue
+      @@queue
+    end
+
+    def self.connections
+      @@connections
+    end
+
+    module WebSocket
+      def self.start(host, port)
+        EM::WebSocket.start(:host => host, :port => port) do |ws|
           ws.onopen do
-            puts "Client connected."
-            # player = Player.new(ws)
-            # Player.all.each { |p| p.ws.send({:action => 'new_player', :params => {:uid => player.uid, :name => player.name}}.to_json) }
+            uuid = SecureRandom.uuid
+            Input.connections << { self => uuid }
+            Input.queue.push :id => uuid, :message => 'connected'
           end
 
           ws.onmessage do |data|

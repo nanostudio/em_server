@@ -1,14 +1,14 @@
 input:
-  type: websocket
+  type: web_socket
   host: 0.0.0.0
-  port: 8080
+  port: 4567
 
-output:
-  type: websocket
-  host: 0.0.0.0
-  port: 8080
+# output:
+#   type: web_socket
+#   host: 0.0.0.0
+#   port: 8080
 
-game_engine:
-  type: socket
-  host: 0.0.0.0
-  port: 9090
+# game_engine:
+#   type: socket
+#   host: 0.0.0.0
+#   port: 9090

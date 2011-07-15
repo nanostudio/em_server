@@ -1,8 +1,8 @@
 require 'rspec'
 require File.expand_path(File.dirname(__FILE__) + "/../lib/squirrel.rb")
 
-RSpec.configure do |c|
-  c.mock_with :rspec
+RSpec.configure do |config|
+  config.mock_with :rspec
 end
 
 def em(&block)

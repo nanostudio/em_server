@@ -6,7 +6,7 @@ module Squirrel
   	
 	  class Configuration
 	  	def socket(options)
-	  		# Input::Websocket.start(options)
+	  		# Input::WebSocket.start(options)
 	  	end
 	  end
   end

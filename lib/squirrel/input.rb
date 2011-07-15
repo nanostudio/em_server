@@ -1,13 +1,13 @@
 module Squirrel
   module Input
   	def self.config
-  		yield Configuration.new
+  		Configuration.new
   	end
   	
 	  class Configuration
       # TODO gerar metodos para todos os inputs disponiveis
 	  	def websocket(options)
-	  		Input::Websocket.start(options)
+	  		Input::WebSocket.start(options)
 	  	end
 	  end
   end

@@ -26,7 +26,7 @@
         "send_state": Game.updateState
       }
 
-      ws = new WebSocket("ws://localhost:8080/");
+      ws = new WebSocket("ws://localhost:4567/");
       
       ws.onmessage = function (evt) {
         var data = JSON.parse(evt.data);

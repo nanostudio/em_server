@@ -3,16 +3,15 @@ module Squirrel
     def self.start
       EM.run do
         yml = YAML.load_file Squirrel::Server.root + '/config/squirrel.yml'
-        input, output, game_engine = yml[:input], yml[:output], yml[:game_engine]
 
-        config.input input['type'], input['host'], input['port'] if input
-        config.output output['type'], output['host'], output['port'] if output
-        config.game_engine game_engine['type'], game_engine['host'], game_engine['port'] if game_engine
+        config.input yml.fetch('input', nil)
+        config.output yml.fetch('output', nil)
+        config.game_engine yml.fetch('game_engine', nil)
       end
     end
 
     def self.config
-      Configuration.new
+      Configuration
     end
 
     def self.root
@@ -21,24 +20,29 @@ module Squirrel
   end
 
   class Configuration
-    def input(type, options)
-      Input::Websocket.start(options)
+    def self.input(input)
+      if input && input['type']
+        klass = input['type'].classify
+
+        if Input.constants.include? klass.to_sym
+          Input.module_eval(klass).start input['host'], input['port']
+        else
+          raise UnsupportedAdapter
+        end
+      else
+        raise ConfigurationError, 'At least one input is needed.'
+      end
+    end
+
+    def self.output(output)
+      Output::WebSocket.start(output['host'], output['port']) if output
+    end
+
+    def self.game_engine(game_engine)
+      GameEngine::Socket.start(game_engine['host'], game_engine['port']) if game_engine
     end
   end
+
+  class ConfigurationError < StandardError; end
+  class UnsupportedAdapter < StandardError; end
 end
-
-# Squirrel::Input.config do |config|
-#   config.websocket :host => '0.0.0.0', :port => 8080
-# end
-
-# Squirrel::GameEngine.config do |config|
-#   config.socket :host => '0.0.0.0', :port => 8080
-# end
-
-# Squirrel::IO.config do |config|
-#   config.websocket :host => '0.0.0.0', :port => 8080
-# end
-
-# Squirel::Output.config do |config|
-#   config.websocket :host => '0.0.0.0', :port => 8080
-# end
