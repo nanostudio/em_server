@@ -4,22 +4,22 @@ module Squirrel
       EM.run do
         yml = YAML.load_file Squirrel::Server.root + '/config/squirrel.yml'
 
-        config.input yml.fetch('input', nil)
-        config.output yml.fetch('output', nil)
-        config.game_engine yml.fetch('game_engine', nil)
+        Server.config do |config|
+          config.input        yml.fetch('input', nil)
+          config.output       yml.fetch('output', nil)
+          config.game_engine  yml.fetch('game_engine', nil)
+        end
       end
     end
 
     def self.config
-      Configuration
+      yield self
     end
 
     def self.root
       @root ||= File.expand_path(File.dirname(__FILE__) + '/../..')
     end
-  end
 
-  class Configuration
     def self.input(input)
       if input && input['type']
         klass = input['type'].classify

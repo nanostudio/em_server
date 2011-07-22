@@ -8,6 +8,7 @@ require 'json'
 require 'yaml'
 require 'active_support/inflector'
 require 'securerandom'
+require 'pry'
 
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/server')
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/input')

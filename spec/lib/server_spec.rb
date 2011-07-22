@@ -4,7 +4,7 @@ describe Squirrel::Server do
   context "#start" do
     before(:each) do
       @config = mock().as_null_object
-      Squirrel::Configuration.stub(:new).and_return(@config)
+      # Squirrel::Configuration.stub(:new).and_return(@config)
     end
 
     it "starts the Event Machine loop" do

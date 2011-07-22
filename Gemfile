@@ -9,4 +9,4 @@ gem 'rspec'
 gem 'i18n'
 gem 'active_support'
 
-gem 'ruby-debug19'
+gem 'pry'
