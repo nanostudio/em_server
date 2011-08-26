@@ -4,7 +4,6 @@ describe Squirrel::Server do
   context "#start" do
     before(:each) do
       @config = mock().as_null_object
-      # Squirrel::Configuration.stub(:new).and_return(@config)
     end
 
     it "starts the Event Machine loop" do
@@ -14,7 +13,7 @@ describe Squirrel::Server do
 
     it "reads the configuration YAML" do
       em do
-        YAML.should_receive(:load_file).with(Squirrel::Server.root + '/config/squirrel.yml').and_return('input' => {'type' => 'web_socket', 'host' => '0.0.0.0', 'port' => '8080'})
+        YAML.should_receive(:load_file).with(Squirrel::Server.root + '/config/squirrel.yml').and_return(yml)
         subject.start
       end
     end
@@ -66,7 +65,7 @@ describe Squirrel::Server do
       it "initilizes a game_engine connection" do
         YAML.should_receive(:load_file).and_return(yml('game_engine' => 'socket'))
         em do
-          Squirrel::GameEngine::Socket.should_receive(:start)
+          Squirrel::GameEngine.should_receive(:start_strategy)
           subject.start
         end
       end
@@ -78,6 +77,11 @@ def yml(options = nil)
   {
     'input' => {
       'type' => 'web_socket',
+      'host' => '0.0.0.0',
+      'port' => '9876'
+    },
+    'game_engine' => {
+      'type' => 'socket',
       'host' => '0.0.0.0',
       'port' => '9876'
     }

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EventMachine</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="player.js"></script>
+
+  <script>
+    // Comunicação
+    var ws;
+    var map = undefined;
+    var playerName = '';
+
+    $(document).ready(function() {
+      if (!("WebSocket" in window)) {
+        alert("Sorry, WebSockets unavailable.");
+        return;
+      }
+
+      var call = {
+        "new_player": Game.newPlayer,
+        "player_info": Game.setInfo,
+        "player_exited": Game.playerExited,
+        "send_state": Game.updateState
+      }
+
+      ws = new WebSocket("ws://0.0.0.0:8080/");
+      
+      ws.onmessage = function (evt) {
+        console.log(evt)
+        // var data = JSON.parse(evt.data);
+        // call[data.action](data.params);
+      };
+
+      ws.onclose = function (e) {
+        // console.log(e);
+      };
+
+      ws.onerror = function (e) {
+        console.log(e);
+      }
+    });
+
+    $(window).unload(function() {
+      console.log('reload window')
+      ws.disconnect();
+    });
+  </script>
+
+  <script>
+    // Movimentação
+
+    $(function() {
+      $("body").keydown(function(e){
+        var move = false;
+        var player = Game.currentPlayer;
+
+        switch (e.keyCode) {
+          case 38:
+            move = true;
+            player.moveUp();
+            break;
+          case 40:
+            move = true;
+            player.moveDown();
+            break;
+          case 37:
+            move = true;
+            player.moveLeft();
+            break;
+          case 39:
+            move = true;
+            player.moveRight();
+        }
+
+        if(move) {
+          var st = JSON.stringify({action: 'update_state', state: { uid: player.uid, top: player.top.toString(), left: player.left.toString()}});
+          ws.send(st);
+        }
+      })
+    });
+  </script>
+
+  <style>
+    .area{
+        width: 600px;
+        height: 200px;
+        background: #616161;
+        padding-top: 40px;
+    }
+
+    .element{
+        position: absolute;
+        background: #000;
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+    }
+
+</style>
+</head>
+<body>
+
+  <body>
+    <div class="area">
+      <!-- <div class="element" id='player' style="margin-left: 10px;"></div> -->
+    </div>
+  </body>
+
+</body>
+</html>

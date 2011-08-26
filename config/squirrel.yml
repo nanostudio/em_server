@@ -8,7 +8,7 @@ input:
 #   host: 0.0.0.0
 #   port: 8080
 
-# game_engine:
-#   type: socket
-#   host: 0.0.0.0
-#   port: 9090
+game_engine:
+  type: socket
+  host: 0.0.0.0
+  port: 9090
