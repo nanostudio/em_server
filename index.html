@@ -26,16 +26,21 @@
         "send_state": Game.updateState
       }
 
-      ws = new WebSocket("ws://localhost:4567/");
+      ws = new WebSocket("ws://0.0.0.0:8080/");
       
       ws.onmessage = function (evt) {
-        var data = JSON.parse(evt.data);
-        call[data.action](data.params);
+        console.log(evt)
+        // var data = JSON.parse(evt.data);
+        // call[data.action](data.params);
       };
 
-      ws.onclose = function () {
-        console.log("socket closed");
+      ws.onclose = function (e) {
+        // console.log(e);
       };
+
+      ws.onerror = function (e) {
+        console.log(e);
+      }
     });
 
     $(window).unload(function() {

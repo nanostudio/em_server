@@ -1,0 +1,6 @@
+Squirrel Server
+===============
+
+Squirrel Server is a multipurpose server for distributted gaming.
+
+It implements strategies for handling unlimited input and output connections from various origins ( and protocols), and distributes those for one or more 'game engines', which may be distributed on various servers as well. It handles the output of the game engines to the output listeners in the same form.

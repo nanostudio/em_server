@@ -2,19 +2,28 @@ module Squirrel
   module Input
     module WebSocket
       def self.start(host, port)
+        Logger.info "Initializing Squirrel on #{host}:#{port}"
+
         EM::WebSocket.start(:host => host, :port => port) do |ws|
           ws.onopen do
+            Logger.info "WebSocket connection established: #{ws}"
             new_connection(ws)
+            ws.send('ack')
           end
 
           ws.onmessage do |data|
+            Logger.info "Data received: #{data}"
             new_message ws, data
+            ws.send('ack')
           end
 
           ws.onclose do
+            ws.send('ack')
           end
 
-          # ws.onerror
+          ws.onerror do |error|
+            Logger.error error
+          end
         end
       end
 

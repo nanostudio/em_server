@@ -1,7 +1,7 @@
 input:
   type: web_socket
   host: 0.0.0.0
-  port: 4567
+  port: 8080
 
 # output:
 #   type: web_socket

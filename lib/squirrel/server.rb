@@ -1,11 +1,14 @@
 module Squirrel
+  Logger = ::Logger.new(STDOUT)
+
   module Server
     def self.start
       EM.run do
         yml = YAML.load_file Squirrel::Server.root + '/config/squirrel.yml'
 
+        Input.start_strategy(yml.fetch('input', nil))
+
         Server.config do |config|
-          config.input        yml.fetch('input', nil)
           config.output       yml.fetch('output', nil)
           config.game_engine  yml.fetch('game_engine', nil)
         end
@@ -18,20 +21,6 @@ module Squirrel
 
     def self.root
       @root ||= File.expand_path(File.dirname(__FILE__) + '/../..')
-    end
-
-    def self.input(input)
-      if input && input['type']
-        klass = input['type'].classify
-
-        if Input.constants.include? klass.to_sym
-          Input.module_eval(klass).start input['host'], input['port']
-        else
-          raise UnsupportedAdapter
-        end
-      else
-        raise ConfigurationError, 'At least one input is needed.'
-      end
     end
 
     def self.output(output)

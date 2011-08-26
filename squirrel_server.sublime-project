@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"sub",
+				"subject"
+			],
+			[
 				"mod",
 				"mod: module .. end"
 			],
@@ -87,7 +91,7 @@
 			"file": "/home/dimas/projetos/rails/squirrel_server/bin/squirrel",
 			"settings":
 			{
-				"buffer_size": 937,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,15 +99,7 @@
 			"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel.rb",
 			"settings":
 			{
-				"buffer_size": 926,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/inputs/websocket.rb",
-			"settings":
-			{
-				"buffer_size": 1562,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,7 +107,39 @@
 			"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/inputs/websocket_spec.rb",
 			"settings":
 			{
-				"buffer_size": 170,
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/inputs/websocket.rb",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/game_engines/socket.rb",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/game_engines/socket_spec.rb",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/dimas/projetos/rails/squirrel_server/Gemfile",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -119,15 +147,15 @@
 			"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/server.rb",
 			"settings":
 			{
-				"buffer_size": 1207,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/server_spec.rb",
+			"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/input.rb",
 			"settings":
 			{
-				"buffer_size": 2389,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -135,15 +163,15 @@
 			"file": "/home/dimas/projetos/rails/squirrel_server/config/squirrel.yml",
 			"settings":
 			{
-				"buffer_size": 185,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/dimas/projetos/rails/squirrel_server/index.html",
+			"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/server_spec.rb",
 			"settings":
 			{
-				"buffer_size": 2305,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		}
@@ -157,6 +185,10 @@
 		],
 		"width": 0
 	},
+	"console":
+	{
+		"height": 0
+	},
 	"distraction_free":
 	{
 		"menu_visible": true,
@@ -167,11 +199,15 @@
 	},
 	"file_history":
 	[
+		"/home/dimas/projetos/rails/squirrel_server/lib/squirrel/server.rb",
+		"/home/dimas/projetos/rails/squirrel_server/spec/lib/server_spec.rb",
+		"/home/dimas/projetos/rails/squirrel_server/config/squirrel.yml",
+		"/home/dimas/projetos/rails/squirrel_server/index.html",
+		"/home/dimas/projetos/rails/squirrel_server/lib/squirrel/input.rb",
+		"/home/dimas/projetos/rails/squirrel_server/.rvmrc",
 		"/home/dimas/projetos/rails/squirrel_server/lib/squirrel/outputs/websocket.rb",
 		"/home/dimas/projetos/rails/squirrel_server/lib/squirrel/game_engine.rb",
-		"/home/dimas/projetos/rails/squirrel_server/lib/squirrel/input.rb",
 		"/home/dimas/projetos/rails/squirrel_server/spec/spec_helper.rb",
-		"/home/dimas/projetos/rails/squirrel_server/config/squirrel.yml",
 		"/home/dimas/projetos/rails/squirrel_server/Gemfile",
 		"/home/dimas/projetos/rails/squirrel_server/lib/squirrel/inputs/socket.rb",
 		"/home/dimas/projetos/rails/squirrel_server/lib/squirrel/output.rb",
@@ -290,14 +326,15 @@
 		"/home/dimas/.config/sublime-text-2/Packages/Rails/link_to-model.sublime-snippet",
 		"/home/dimas/.config/sublime-text-2/Packages/Ruby/Ruby.tmLanguage",
 		"/home/dimas/.config/sublime-text-2/Packages/Rspec/Snippets/Require spec_helper.tmSnippet",
-		"/home/dimas/projetos/rails/nano_online/app/models/app_version.rb",
-		"/home/dimas/projetos/rails/nano_online/app/models/unit_format.rb",
-		"/home/dimas/projetos/rails/nano_online/app/models/ranking_system.rb",
-		"/home/dimas/projetos/rails/nano_online/app/models/ranking_type.rb",
-		"/home/dimas/projetos/rails/nano_online/spec/models/ranking_entry_spec.rb"
+		"/home/dimas/projetos/rails/nano_online/app/models/app_version.rb"
 	],
+	"find":
+	{
+		"height": 33
+	},
 	"find_in_files":
 	{
+		"height": 88,
 		"include_history":
 		[
 			""
@@ -467,7 +504,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -475,15 +512,15 @@
 					"file": "/home/dimas/projetos/rails/squirrel_server/bin/squirrel",
 					"settings":
 					{
-						"buffer_size": 937,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								113,
-								113
+								0,
+								0
 							]
 						],
 						"settings":
@@ -501,15 +538,15 @@
 					"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel.rb",
 					"settings":
 					{
-						"buffer_size": 926,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								214,
-								214
+								0,
+								0
 							]
 						],
 						"settings":
@@ -524,25 +561,24 @@
 				},
 				{
 					"buffer": 2,
-					"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/inputs/websocket.rb",
+					"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/inputs/websocket_spec.rb",
 					"settings":
 					{
-						"buffer_size": 1562,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								544,
-								544
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Rspec/RSpec.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
 						"translation.y": 0,
@@ -552,44 +588,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/inputs/websocket_spec.rb",
+					"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/inputs/websocket.rb",
 					"settings":
 					{
-						"buffer_size": 170,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								58,
-								58
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rspec/RSpec.tmLanguage"
-						},
-						"translation.x": 0,
-						"translation.y": 0,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/server.rb",
-					"settings":
-					{
-						"buffer_size": 1207,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								581,
-								581
+								0,
+								0
 							]
 						],
 						"settings":
@@ -605,24 +615,102 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/server_spec.rb",
+					"buffer": 4,
+					"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/game_engines/socket.rb",
 					"settings":
 					{
-						"buffer_size": 2389,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								538,
-								538
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Rspec/RSpec.tmLanguage",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/game_engines/socket_spec.rb",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/dimas/projetos/rails/squirrel_server/Gemfile",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/server.rb",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -633,19 +721,47 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "/home/dimas/projetos/rails/squirrel_server/config/squirrel.yml",
+					"buffer": 8,
+					"file": "/home/dimas/projetos/rails/squirrel_server/lib/squirrel/input.rb",
 					"settings":
 					{
-						"buffer_size": 185,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								185,
-								185
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/home/dimas/projetos/rails/squirrel_server/config/squirrel.yml",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -659,24 +775,24 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "/home/dimas/projetos/rails/squirrel_server/index.html",
+					"buffer": 10,
+					"file": "/home/dimas/projetos/rails/squirrel_server/spec/lib/server_spec.rb",
 					"settings":
 					{
-						"buffer_size": 2305,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								730,
-								730
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -689,6 +805,14 @@
 			]
 		}
 	],
+	"incremental_find":
+	{
+		"height": 0
+	},
+	"input":
+	{
+		"height": 30
+	},
 	"layout":
 	{
 		"cells":
@@ -712,6 +836,10 @@
 		]
 	},
 	"menu_visible": true,
+	"replace":
+	{
+		"height": 62
+	},
 	"save_all_on_build": true,
 	"select_file":
 	{
@@ -719,20 +847,32 @@
 		"selected_items":
 		[
 			[
-				"index",
-				"index.html"
+				"sock",
+				"lib/squirrel/game_engines/socket.rb"
 			],
 			[
 				"yml",
 				"config/squirrel.yml"
 			],
 			[
-				"spehel",
-				"spec/spec_helper.rb"
-			],
-			[
 				"input",
 				"lib/squirrel/input.rb"
+			],
+			[
+				"serverrb",
+				"lib/squirrel/server.rb"
+			],
+			[
+				"rvm",
+				".rvmrc"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"spehel",
+				"spec/spec_helper.rb"
 			],
 			[
 				".rspe",
@@ -1217,18 +1357,6 @@
 			[
 				"viewimuprofile",
 				"app/views/imuz_db/game_sessions/profile.html.erb"
-			],
-			[
-				"homehtml",
-				"public/imuz_db/home.html"
-			],
-			[
-				"layimuzdb",
-				"app/views/layouts/imuz_db.html.erb"
-			],
-			[
-				"soundcontr",
-				"public/javascripts/imuz_db/soundController.js"
 			]
 		],
 		"width": 0
