@@ -4,14 +4,16 @@ module Squirrel
   module Server
     def self.start
       EM.run do
+        # TODO colocar isso em um deferable
         yml = YAML.load_file Squirrel::Server.root + '/config/squirrel.yml'
 
         Input.start_strategy(yml.fetch('input', nil))
         GameEngine.start_strategy(yml.fetch('game_engine', nil))
 
-        Server.config do |config|
-          config.output       yml.fetch('output', nil)
-        end
+        # old method
+        #Server.config do |config|
+        #  config.output yml.fetch('output', nil)
+        #end
       end
     end
 
@@ -28,6 +30,8 @@ module Squirrel
     end
   end
 
-  class ConfigurationError < StandardError; end
-  class UnsupportedAdapter < StandardError; end
+  class ConfigurationError < StandardError;
+  end
+  class UnsupportedAdapter < StandardError;
+  end
 end

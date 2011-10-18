@@ -21,7 +21,7 @@ module Squirrel
           raise UnsupportedAdapter
         end
       else
-        raise ConfigurationError, 'At least one input is needed (Please, review your squirrel.yml).'
+        raise ConfigurationError, 'At least one input strategy is needed (Please, review your squirrel.yml).'
       end
     end
 

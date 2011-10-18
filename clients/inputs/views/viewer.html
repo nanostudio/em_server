@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tela</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+  <script>
+    var ws;
+
+    $(document).ready(function() {
+      if (!("WebSocket" in window)) {
+        alert("Sorry, WebSockets unavailable.");
+        return;
+      }
+
+//      var call = {
+//        "new_player": Game.newPlayer,
+//        "player_info": Game.setInfo,
+//        "player_exited": Game.playerExited,
+//        "send_state": Game.updateState
+//      }
+
+      ws = new WebSocket("ws://localhost:8080/");
+
+      ws.onopen = function (evt) {
+//        ws_send('new_connection');
+      }
+
+      ws.onmessage = function (evt) {
+        console.log(evt.data)
+//        var data = JSON.parse(evt.data);
+//        call[data.action](data.params);
+      };
+
+      ws.onclose = function () {
+        console.log("socket closed");
+      };
+    });
+
+    $(window).unload(function() {
+      console.log('reload window')
+      ws.disconnect();
+    });
+
+    function ws_send(type, data)  {
+      ws.send(JSON.stringify({
+        type: type,
+        data: (data || {})
+      }));
+    }
+  </script>
+</head>
+<body>
+Escolha sua a&ccedil;&atilde;o:
+<ul>
+  <li><a id='action_1' class='action'>A&ccedil;&atilde;o 1</a></li>
+  <li><a id='action_2' class='action'>A&ccedil;&atilde;o 2</a></li>
+  <li><a id='action_3' class='action'>A&ccedil;&atilde;o 3</a></li>
+</ul>
+
+<script type="text/javascript">
+  $('.action').click(function() {
+    console.log($(this).attr('id'));
+    ws.send(JSON.stringify({
+      type: 'action',
+      data: {
+        action_name: $(this).attr('id')
+      }
+    }));
+  });
+</script>
+</body>
+</html>

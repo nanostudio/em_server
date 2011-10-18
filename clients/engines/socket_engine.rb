@@ -3,19 +3,18 @@
 
 require "rubygems"
 require "eventmachine"
+require 'json'
 
-module HttpHeaders 
+module HttpHeaders
   def post_init
-    puts 'Connected'
+    puts 'Connected to Squirrel via socket on port 9090.'
   end
-  
+
   def receive_data(data)
-    puts data
+    puts JSON.parse data
   end
-  
+
   def unbind
-    puts 'Disconected'
-    
     EventMachine::stop_event_loop
   end
 end

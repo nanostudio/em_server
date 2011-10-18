@@ -15,7 +15,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/input')
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/output')
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/game_engine')
 
-# TODO carregar todos os arquivos nessas pastar
+# TODO carregar todos os arquivos nessas pastas
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/inputs/websocket')
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/inputs/socket')
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/outputs/websocket')
