@@ -1,14 +1,12 @@
 require "rubygems"
 require "bundler/setup"
-require 'eventmachine'
-require 'em-websocket'
-require 'em-http'
-require 'json'
+Bundler.require(:default)
+
+require 'evma_httpserver'
 require 'yaml'
 require 'active_support/inflector'
 require 'securerandom'
 require 'logger'
-require 'pry'
 
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/server')
 require File.expand_path(File.dirname(__FILE__) + '/../lib/squirrel/input')

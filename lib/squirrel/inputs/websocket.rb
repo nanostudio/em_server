@@ -5,7 +5,7 @@ module Squirrel
       # @param port [String]
       # @return [NilClass]
       def self.start(host, port)
-        Logger.info "Initializing Squirrel input on #{host}:#{port}"
+        Logger.info "Squirrel websocket input available on #{host}:#{port}"
 
         EM::WebSocket.start(:host => host, :port => port) do |ws|
           ws.onopen do |a|

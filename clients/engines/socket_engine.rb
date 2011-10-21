@@ -4,6 +4,7 @@
 require "rubygems"
 require "eventmachine"
 require 'json'
+#require 'pry'
 
 module HttpHeaders
   def post_init
@@ -11,6 +12,7 @@ module HttpHeaders
   end
 
   def receive_data(data)
+    #binding.pry
     puts JSON.parse data
   end
 

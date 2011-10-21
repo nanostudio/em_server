@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tela</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+
+<body>
+<div id='controls'>
+  Escolha sua a&ccedil;&atilde;o:
+  <ul>
+    <li><a id='up' class='action'>Up</a></li>
+    <li><a id='down' class='action'>Down</a></li>
+    <li><a id='break' class='action'>Break</a></li>
+  </ul>
+</div>
+
+<div id='disconnected' style="display: none">
+  The connection error.<br/>
+  Please refresh your browser in a few seconds.
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('.action').click(function() {
+      $.ajax({
+        url: '/action?param=' + $(this).attr('id'),
+        success: function() {
+          console.log('success');
+        }
+      });
+    })
+  });
+  //      ws.send(JSON.stringify({
+  //        type: 'action',
+  //        data: {
+  //          action_name: $(this).attr('id')
+  //        }
+  //      }));
+</script>
+</body>
+</html>

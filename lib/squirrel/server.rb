@@ -8,6 +8,7 @@ module Squirrel
         yml = YAML.load_file Squirrel::Server.root + '/config/squirrel.yml'
 
         Input.start_strategy(yml.fetch('input', nil))
+        Input.start_strategy("type" => "web_socket", "host" => "0.0.0.0", "port" => 4400)
         GameEngine.start_strategy(yml.fetch('game_engine', nil))
 
         # old method
