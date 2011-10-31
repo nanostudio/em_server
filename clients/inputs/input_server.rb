@@ -6,6 +6,7 @@ require 'eventmachine'
 require 'evma_httpserver'
 require 'em-websocket'
 require 'json'
+require 'erb'
 require 'logger'
 require 'singleton'
 require 'pry'
@@ -22,20 +23,37 @@ class HtmlServer < EM::Connection
     resp = EM::DelegatedHttpResponse.new(self)
     case @http_path_info
     when '/voting'
-      html = File.open(File.expand_path('clients/inputs/views/viewer.html', '.')).read
+      html = ERB.new(File.open(File.expand_path('clients/inputs/views/voting.html.erb', '.')).read).result
     when '/controller'
-      html = File.open(File.expand_path('clients/inputs/views/controller.html', '.')).read
+      @@player_count = (@@player_count + 1) % 5
+      @@player_count = 1 if @@player_count == 0
+      html = ERB.new(File.open(File.expand_path('clients/inputs/views/controller.html.erb', '.')).read).result
     when '/action'
       send_to_socket @http_query_string
+    when '/favicon.ico'
+      # ZzzzZZZzzz
+    when '/current_user_id'
+      html = (VoteCounter.current_player + 1).to_s
+    else
+      html = File.open(File.expand_path("clients/inputs/views#{@http_path_info}", '.'), 'rb').read
     end
 
-    resp.status = 200
-    resp.content_type 'text/html'
+    case @http_path_info
+    when /css/
+      resp.content_type 'text/css'
+    when /png/
+      resp.content_type 'image/png'
+    else
+      resp.content_type 'text/html'
+    end
+
+    resp.status  = 200
     resp.content = html
     resp.send_response
   rescue
     resp.status = 500
     resp.send_response
+    raise
   end
 
   def send_action param
@@ -61,7 +79,9 @@ class HtmlServer < EM::Connection
   end
 
   def is_action?(value)
-    ['up', 'down', 'break'].include? value
+    ['up', 'down', 'break'].each do |action|
+      return true if value.match action
+    end
   end
 end
 
@@ -82,7 +102,7 @@ class VoteCounter
 
   # @return [Boolean]
   def self.end_current_voting
-    @current_player = (@current_player + 1) % 4
+    @current_player = (@current_player + 1) % 5
     @votes          = Hash.new(0)
   end
 
@@ -90,9 +110,15 @@ class VoteCounter
   def self.result
     @votes.select { |k, v| v == @votes.values.max }.keys.first
   end
+
+  def self.current_player
+    @current_player
+  end
 end
 
 EM.run do
+  @@player_count = 0
+
   # This is the socket connection with Squirrel.
   # The result of the voting calculations will be sent through here to the Flash game.
   EventMachine::connect HOST, 8080 do |socket|
@@ -137,8 +163,8 @@ EM.run do
     SOCKETS.first.send_data({
                                 type: 'voting',
                                 data: {
-                                    #result: 'bomb_player_1'
-                                    result: result || ""
+                                    result: 'bomb_player_1'
+                                    #result: result || ""
                                 }
                             }.to_json)
 

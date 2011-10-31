@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>MTv</title>
+  <meta name="viewport" content="width=320; user-scalable=false"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="style/estilo.css" type="text/css"/>
+</head>
+
+<body data-id="<%= VoteCounter.current_player + 1 %>">
+<div class="geral">
+  <div class="content">
+    <div class="header">
+      <h1><span>O que voc&ecirc; quer mandar para eles?</span></h1>
+    </div>
+    <div class="players personagem0<%= VoteCounter.current_player + 1 %>">
+      <div class="cont_personagem cont_personagem01">
+        <img src="img/personagem-01.png" width="115" height="130" alt="" class="personagem01"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 1</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+      <div class="cont_personagem cont_personagem02">
+        <img src="img/personagem-02.png" width="115" height="130" alt="" class="personagem05"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 2</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+      <div class="cont_personagem cont_personagem03">
+        <img src="img/popoto.png" width="115" height="126" alt="" class="personagem02"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 3</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+      <div class="cont_personagem cont_personagem04">
+        <img src="img/safeno.png" width="125" height="115" alt="" class="personagem03"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 4</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+      <div class="cont_personagem cont_personagem05">
+        <img src="img/ze-maria.png" width="115" height="127" alt="" class="personagem04"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 5</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+    </div>
+    <div class="options">
+      <ul>
+        <li class="action bomb" id="bomb_player">
+          <a><img src="img/bomb.png" width="74" height="88" alt=""/></a>
+        </li>
+
+        <li class="action gloves" id="strike_player">
+          <a><img src="img/gloves.png" width="82" height="82" alt=""/></a>
+        </li>
+
+        <li class="action info" id="random">
+          <a><img src="img/info.png" width="74" height="94" alt=""/></a>
+        </li>
+
+        <li class="action oil" id="oil_player">
+          <a><img src="img/oil.png" width="87" height="74" alt=""/></a>
+        </li>
+
+        <li class="action fight" id="punch_player">
+          <a><img src="img/fight.png" width="92" height="80" alt=""/></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var id = $('body').attr('data-id');
+  var action_sent = false;
+  var current_action;
+
+  $('.action').click(function() {
+    if (action_sent)
+      return false;
+    
+    sendAction($(this).attr('id'));
+    disableAllExcept(this);
+  });
+
+  function sendAction(action) {
+    $.ajax({
+      url: '/action?param=' + action + id,
+      success: function() {
+        action_sent = true;
+      }
+    });
+  }
+
+  function disableAllExcept(element) {
+    $('.action').find('a').addClass('not_clicked');
+    $(element).find('a').removeClass('not_clicked');
+  }
+
+  function update() {
+    getId(function(newId) {
+      if (newId != id)
+        updateId(newId);
+
+      setTimeout(update, 5000);
+    });
+  }
+
+  function getId(callback) {
+    $.ajax({
+      url: '/current_user_id',
+      success: function(data) {
+        callback(data);
+      }
+    });
+  }
+
+  function updateId(newId) {
+    var players = $('.players');
+
+    players.removeClass();
+    players.addClass('players');
+    players.addClass('personagem0' + newId);
+
+    id = newId;
+    action_sent = false;
+
+    enableAll();
+  }
+
+  function enableAll() {
+    $('.action').find('a').removeClass('not_clicked');
+  }
+
+  setTimeout(update, 5000);
+</script>
+</body>
+
+</html>

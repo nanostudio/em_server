@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>MTv</title>
+  <meta name="viewport" content="width=320; user-scalable=false"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="style/estilo.css" type="text/css"/>
+  <link rel="stylesheet" href="style/control_style.css" type="text/css"/>
+</head>
+
+<body data-id='<%= @@player_count %>'>
+<div class="geral">
+  <div class="content">
+    <div class="players personagem0<%= @@player_count %>">
+      <div class="cont_personagem cont_personagem01">
+        <img src="img/personagem-01.png" width="115" height="130" alt="" class="personagem01"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 1</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+      <!--<div class="cont_personagem cont_personagem02">-->
+        <!--<img src="img/personagem-02.png" width="115" height="130" alt="" class="personagem05"/>-->
+
+        <!--<div class="info_players" class="">-->
+          <!--<p class="avatar">Jogador 2</p>-->
+
+          <!--<p class="players_name">Bla ble bli - <strong>RJ</strong></p>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="cont_personagem cont_personagem03">
+        <img src="img/popoto.png" width="115" height="126" alt="" class="personagem02"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 3</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+      <div class="cont_personagem cont_personagem02">
+        <img src="img/safeno.png" width="125" height="115" alt="" class="personagem03"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 2</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+      <div class="cont_personagem cont_personagem04">
+        <img src="img/ze-maria.png" width="115" height="127" alt="" class="personagem04"/>
+
+        <div class="info_players" class="">
+          <p class="avatar">Jogador 4</p>
+
+          <p class="players_name">Bla ble bli - <strong>RJ</strong></p>
+        </div>
+      </div>
+
+    </div>
+    <div class="control">
+      <div class="action up" id='up'>
+        <a><span>Up</span></a>
+      </div>
+      <div class="action break" id='break'>
+        <a><span>Break</span></a>
+      </div>
+      <div class="action down" id='down'>
+        <a><span>Down</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var id = $('body').attr('data-id');
+
+  $('.action').click(function() {
+    console.log('action')
+    sendAction($(this).attr('id'));
+  });
+
+  function sendAction(action) {
+    $.ajax({
+      url: '/action?param=' + action + id,
+      success: function() {
+        action_sent = true;
+      }
+    });
+  }
+</script>
+</body>
+
+</html>

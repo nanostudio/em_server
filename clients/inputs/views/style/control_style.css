@@ -1,0 +1,133 @@
+/*-----------------------------------------------------------------------------
+Nano Studio Website - Serviços Stylesheet
+
+Authors: Fabricio Fernandes
+-----------------------------------------------------------------------------*/
+@import url("reset.css");
+
+body {
+    background: #f9cc13 url(../img/controle/bkg_controle.png) repeat-x;
+}
+
+    .geral {
+        background: url(../img/controle/bg_barra_controle.png) repeat-x 0 15px;
+}
+
+.content {
+    height: 480px;
+    width: 320px;
+    margin: 0 auto;
+
+}
+
+/* Informação do jogador
+-----------------------------------------------------------------------------*/
+.players {
+    height: 91px;
+    margin-top: 20px;
+}
+
+.players img {
+    float: left;
+    margin: -15px 0 0 5px;
+}
+
+.players .personagem03 {
+    margin-top: 0px;
+}
+.players .personagem02 {
+    margin-top: -2px;
+}
+.players .personagem01 {
+    margin-top: -6px;
+}
+.players .personagem05 {
+    margin-top: -3px;
+}
+
+.players .info_players {
+    float: left;
+    margin: 40px 0 0 20px;
+}
+
+.avatar {
+    font: bold 20px Verdana, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.players .players_name {
+    font: bold 14px Verdana, sans-serif;
+    color: #ffae00;
+    text-transform: uppercase;
+}
+.players .players_name strong {
+    font-weight: bold;
+}
+
+/*  Mostra jogadores
+-----------------------------------------------------------------------------*/
+.players .cont_personagem{
+    display: none;
+}
+
+.personagem01 .cont_personagem01,
+.personagem02 .cont_personagem02,
+.personagem03 .cont_personagem03,
+.personagem04 .cont_personagem04,
+.personagem05 .cont_personagem05{
+    display: block;
+}
+
+
+/*  Controle do jogo
+-----------------------------------------------------------------------------*/
+.control {
+    background: url(../img/controle/base.png) no-repeat center;
+    width: 255px;
+    height: 240px;
+    margin: 60px auto 0 auto;
+    padding-top: 38px;
+}
+
+.control a {
+    display: block;
+}
+
+.control div {
+    height: 73px;
+    width: 104px;
+    margin: -8px auto 0 auto;
+    cursor: pointer;
+}
+
+.control .break, control break_pressed {
+    height: 79px;
+}
+
+.control .up {
+        background: url(../img/controle/up.png) no-repeat 1px 0;
+}
+
+.control .break {
+        background: url(../img/controle/break.png) no-repeat 5px 0;
+}
+
+.control .down {
+        background: url(../img/controle/down.png) no-repeat 3px 0;
+}
+
+.control span {
+    margin-left: -9999px;
+}
+
+.control .up_pressed {
+    background: url(../img/controle/up_pressed.png) no-repeat 1px 0;
+
+}
+.control .break_pressed {
+    background: url(../img/controle/break_pressed.png) no-repeat 5px 0;
+}
+.control .down_pressed {
+    background: url(../img/controle/down_pressed.png) no-repeat 3px 0;
+}

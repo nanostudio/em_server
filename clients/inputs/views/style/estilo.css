@@ -1,0 +1,138 @@
+/*-----------------------------------------------------------------------------
+Nano Studio Website - Serviços Stylesheet
+
+Authors: Fabricio Fernandes
+-----------------------------------------------------------------------------*/
+@import url("reset.css");
+
+body {
+    background: #ffe800 url(../img/bkg.png) repeat-x;
+}
+
+.geral {
+    background: url(../img/bg_player.png) repeat-x 0 95px;
+}
+
+.content {
+    height: 480px;
+    width: 320px;
+    margin: 0 auto;
+
+}
+
+.content .header {
+    margin-top: 15px;
+}
+
+.content .header h1 {
+    background: url(../img/header.png) no-repeat 25px 0;
+    height: 60px;
+}
+.content .header h1 span {
+    margin-left: -9000px;
+}
+
+
+/* Informação do jogador
+-----------------------------------------------------------------------------*/
+.players {
+    height: 91px;
+    margin-top: 15px;
+}
+
+.players img {
+    float: left;
+    margin: -15px 0 0 5px;
+}
+
+.players .personagem03 {
+    margin-top: 0px;
+}
+.players .personagem02 {
+    margin-top: -2px;
+}
+.players .personagem01 {
+    margin-top: -6px;
+}
+.players .personagem05 {
+    margin-top: -3px;
+}
+
+.players .info_players {
+    float: left;
+    margin: 40px 0 0 20px;
+}
+
+.avatar {
+    font: bold 20px Verdana, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.players .players_name {
+    font: bold 14px Verdana, sans-serif;
+    color: #ffae00;
+    text-transform: uppercase;
+}
+.players .players_name strong {
+    font-weight: bold;
+}
+
+/*  Mostra jogadores
+-----------------------------------------------------------------------------*/
+.players .cont_personagem{
+    display: none;
+}
+
+.personagem01 .cont_personagem01,
+.personagem02 .cont_personagem02,
+.personagem03 .cont_personagem03,
+.personagem04 .cont_personagem04,
+.personagem05 .cont_personagem05{
+    display: block;
+}
+
+
+/*  Opções do jogo
+-----------------------------------------------------------------------------*/
+.options {
+    height: 270px;
+    margin-top: 40px;
+}
+.options ul {
+    position: relative;
+}
+
+.options li {
+    list-style: none;
+    position: absolute;
+}
+.options .bomb {
+    top: 4px;
+    left: 18px;
+}
+
+.options .gloves {
+    top: 10px;
+    right: 15px;
+}
+
+.options .info {
+    top: 85px;
+    left: 120px;
+}
+
+.options .oil {
+    top: 165px;
+    left: 10px
+}
+
+.options .fight {
+    top: 165px;
+    right: 0px;
+}
+
+.options ul li .not_clicked {
+     opacity: 0.40; // outros browsers
+     filter: Alpha(Opacity=40); // IE
+}
